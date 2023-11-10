@@ -8,6 +8,7 @@ function App() {
   return (
     <div className="App">
         <header className="App-header">
+            <div></div>
             <img src={logo} className="App-logo" alt="logo" />
             <h3 className="Game-name">Umbrella</h3>
             <div></div>
