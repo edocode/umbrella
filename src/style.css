@@ -1,5 +1,9 @@
 .timeLeft {
-    background: #61dafb;
+    background: antiquewhite;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .loader {
@@ -20,4 +24,84 @@
     100% {
         transform: rotate(360deg);
     }
+}
+
+.randomWordButton {
+    border: none;
+    color: white;
+    background: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 4rem;
+    margin-top: 1.5rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.generatorImageButton {
+    border: none;
+    color: white;
+    background: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    margin: 0.8rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.inputArea {
+    border: none;
+    background: black;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem;
+    border-radius: 1rem;
+    width: 50%;
+    &:focus{
+        background: black;
+    }
+    &:hover {
+        background: black
+    }
+}
+
+.topic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+    font-size: 36px;
+    color: rebeccapurple;
+}
+
+.topicContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 20%;
+}
+
+.warning {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+    font-size: 20px;
+    color: red;
 }

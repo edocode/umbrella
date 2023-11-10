@@ -3,25 +3,38 @@
 }
 
 .App-logo {
-  height: 10vmin;
+  height: 14vmin;
   pointer-events: none;
+  /*padding: 1rem 3rem;*/
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
 .App-header {
-  background-color: darkslateblue;
-  min-height: 10vh;
+  background-color:black;
+  height: 20vh;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.Game-name {
+  display: flex;
+  flex-direction: column;
+  padding-left: 3rem;
+  margin: 1rem;
+}
+
+
+.Start-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: antiquewhite;
+  width: 100%;
+  height: 80vh;
 }
 
 .App-link {
@@ -35,4 +48,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.button {
+  font-size: 6rem;
+  background: antiquewhite;
+  font-family: "Helvetica";
+  cursor: pointer;
+  border: none;
 }

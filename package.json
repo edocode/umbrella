@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.1",
     "jquery": "^3.7.1",
+    "netlify": "^13.1.10",
     "react": "^18.2.0",
     "react-countdown-circle-timer": "^3.2.1",
     "react-dom": "^18.2.0",
@@ -46,4 +47,5 @@
     "moduleNameMapper": {
       "axios": "axios/dist/node/axios.cjs"
     }
-  }}
+  }
+}
