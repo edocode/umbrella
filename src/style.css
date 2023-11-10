@@ -1,5 +1,4 @@
 .timeLeft {
-    background: antiquewhite;
     height: 80vh;
     display: flex;
     flex-direction: column;
@@ -30,26 +29,26 @@
     border: none;
     color: white;
     background: black;
-    padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 28px;
     display: flex;
     flex-direction: column;
     margin-bottom: 4rem;
     margin-top: 1.5rem;
     border-radius: 1rem;
     cursor: pointer;
+    padding:2rem;
 }
 
 .generatorImageButton {
     border: none;
     color: white;
     background: black;
-    padding: 15px 32px;
+    padding:2rem;
     text-align: center;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 28px;
     display: flex;
     flex-direction: column;
     margin: 0.8rem;
@@ -62,14 +61,18 @@
     background: black;
     color: white;
     padding: 15px 32px;
-    text-align: center;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 22px;
     display: flex;
     flex-direction: column;
     margin: 1.5rem;
     border-radius: 1rem;
+    text-align: left;
     width: 50%;
+    overflow:hidden;
+    resize: none;
+    min-height: 100px;
+    max-height: 100px;
     &:focus{
         background: black;
     }
@@ -84,7 +87,7 @@
     align-items: center;
     justify-content: center;
     margin: 1rem;
-    font-size: 36px;
+    font-size: 42px;
     color: rebeccapurple;
 }
 
@@ -102,6 +105,15 @@
     align-items: center;
     justify-content: center;
     margin: 1rem;
-    font-size: 20px;
-    color: red;
+    font-size: 28px;
+    color: white;
+}
+
+.timeUpText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 80vh;
+    font-size: 6rem;
+    color:white;
 }

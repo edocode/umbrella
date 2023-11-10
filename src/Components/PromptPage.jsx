@@ -114,7 +114,7 @@ const PromptPage = ({disabled})  =>  {
                 <div className="topicContainer">{showTopic === '' && <button className="randomWordButton" disabled={disabled}  onClick={() => pickRandomWord()}>Pick a topic</button>}
                     {showTopic && <div className="topic">{showTopic}</div>}</div>
 
-                <input className="inputArea" id="promptText" name="promptText" placeholder="Type your prompt here"></input>
+                <textarea className="inputArea" id="promptText" name="promptText" placeholder="Type your prompt here"></textarea>
                 {enableSubmit && <input className="generatorImageButton" type={"button"} value={"Generate image"} onClick={() => (generateImage(document.getElementById("promptText").value))} />}
                 {imageLoading &&
                     (<><div>Generating image for you...</div>
@@ -129,7 +129,7 @@ const PromptPage = ({disabled})  =>  {
                 {showError && <div className="warning">Do not use the banned word!!</div>}
                 {showImage && <img alt="generated-image" src={showImage} width="256" height="256"/> }
             </div>)}
-            {showTimesUp && (<div>Times Up!</div>)}
+            {showTimesUp && (<div className="timeUpText">Times Up!</div>)}
         </>
 
     )
