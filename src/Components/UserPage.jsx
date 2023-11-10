@@ -1,6 +1,7 @@
 import {getDatabase, onValue, push, ref, set} from "firebase/database";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {initializeApp} from "firebase/app";
+import './UserPage.css';
 
 const firebaseConfig = {
     databaseURL: process.env.REACT_APP_DB_URL,
@@ -12,6 +13,7 @@ const db = getDatabase(app);
 function UserPage(){
     const [name, setName] = useState('')
     const [users, setUsers] = useState([])
+    const [disabled, setDisabled] = React.useState(false);
 
     useEffect(() => {
         const usersRef = ref(db, 'users');
@@ -30,8 +32,10 @@ function UserPage(){
         const newPostRef = push(usersRef);
         set(newPostRef, name);
         setName('');
-    }}>Submit</button>
-    <ul>
+        setDisabled(true)
+    }}
+    disabled={disabled}>Submit</button>
+    <ul class="usersList">
         {users && users.map(user => <li>{user}</li>)}
     </ul>
         </>
