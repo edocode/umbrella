@@ -1,4 +1,4 @@
-import {getDatabase, onValue, push, ref, set, get} from "firebase/database";
+import {getDatabase, onValue, push, ref, set, get, update} from "firebase/database";
 import React, {useEffect, useState} from "react";
 import {initializeApp} from "firebase/app";
 import './UserPage.css';
@@ -92,7 +92,8 @@ function UserPage(){
                     </div>
 
                     <button  className="joinButton" onClick={async () => {
-                        const snapshot = await get(ref(db, `sessions/${sessionId}`))
+                        const sessionRef = ref(db, `sessions/${sessionId}`)
+                        const snapshot = await get(sessionRef)
                         if (!snapshot.exists()) {
                             alert('Game ID does not exist')
                             return
@@ -109,6 +110,13 @@ function UserPage(){
 
                         const userRef = push(usersRef)
                         await set(userRef, name)
+
+                        // wait for game to start
+                        onValue(sessionRef, (snapshot) => {
+                            if (snapshot.val().started) {
+                                setStartGame(true)
+                            }
+                        })
 
                         setStep(2)
                     }}>Join Game
@@ -135,7 +143,13 @@ function UserPage(){
                 {!isHost && <div className="nameHeader">Waiting for the host to start the game....</div>}
             </>}
 
-            {isHost && !startGame && <div className="Start-button"><button className="button" onClick={() => setStartGame(true)}>START GAME!</button></div>}
+            {isHost && !startGame && <div className="Start-button">
+                <button className="button"
+                onClick={async () => {
+                    const sessionRef = ref(db, `sessions/${sessionId}`)
+                    await update(sessionRef, { started: true })
+                    setStartGame(true)
+            }}>START GAME!</button></div>}
             {startGame && showPromptPage && <PromptPage disabled={false}/>}
         </>
     )
