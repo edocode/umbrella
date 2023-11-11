@@ -1,10 +1,20 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import axios from 'axios';
 import $ from 'jquery';
 import "./../style.css";
+import {initializeApp} from "firebase/app";
+import {getDatabase, onValue, ref, update} from "firebase/database";
 
-const PromptPage = ({disabled})  =>  {
+// TODO: consolidate to one place
+const firebaseConfig = {
+    databaseURL: process.env.REACT_APP_DB_URL,
+    projectId: process.env.REACT_APP_PROJECT_ID
+};
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+const PromptPage = ({disabled, sessionId})  =>  {
         const words = [
         "apple",
         "banana",
@@ -58,7 +68,7 @@ const PromptPage = ({disabled})  =>  {
 
     const pickRandomWord = () => {
         const item = words[Math.floor(Math.random()*words.length)]
-        setShowTopic(item)
+        return item
     }
 
     const generateImage = async (prompt) => {
@@ -122,10 +132,26 @@ const PromptPage = ({disabled})  =>  {
         );
     };
 
+    useEffect(() => {
+        const sessionRef = ref(db, `sessions/${sessionId}`)
+        onValue(sessionRef, (snapshot) => {
+            const topic = snapshot.val().topic;
+            if (topic) {
+                setShowTopic(topic)
+            }
+        })
+    }, [])
+
     return (
         <>
             <div className="timeLeft">
-                <div className="topicContainer">{showTopic === '' && <button className="randomWordButton" disabled={disabled}  onClick={() => pickRandomWord()}>Pick a topic</button>}
+                <div className="topicContainer">{showTopic === '' && <button className="randomWordButton" disabled={disabled}  onClick={async () => {
+                    const topic = pickRandomWord()
+                    setShowTopic(topic)
+                    const sessionRef = ref(db, `sessions/${sessionId}`)
+                    await update(sessionRef, {topic })
+
+                }}>Pick a topic</button>}
                     {showTopic && <div className="topic">{showTopic}</div>}</div>
 
                 <textarea className="inputArea" id="promptText" name="promptText" placeholder="Type your prompt here"></textarea>

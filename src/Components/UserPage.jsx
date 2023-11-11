@@ -138,7 +138,6 @@ function UserPage(){
                 </div>
                 <ol className="usersList">
                     {users && users.map(user => <li>{user}</li>)}
-                   {isHost  && !startGame &&        <img className="hostLogo" src="logo.png" alt="logo512" />}
                 </ol>
                 {!isHost && <div className="nameHeader">Waiting for the host to start the game....</div>}
             </>}
@@ -150,7 +149,7 @@ function UserPage(){
                     await update(sessionRef, { started: true })
                     setStartGame(true)
             }}>START GAME!</button></div>}
-            {startGame && showPromptPage && <PromptPage disabled={false}/>}
+            {startGame && showPromptPage && <PromptPage disabled={false} sessionId={sessionId} />}
         </>
     )
 }
