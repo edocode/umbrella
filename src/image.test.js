@@ -1,4 +1,4 @@
-import GetImage from "./image.js";
+import GetImage from "./functions/image.js";
 import axios from "axios";
 
 const mockPost = jest.spyOn(axios, 'post');
