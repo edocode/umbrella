@@ -1,5 +1,5 @@
 .timeLeft {
-    height: 80vh;
+    height: 50vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,7 +8,6 @@
 .loader {
     width: 56px;
     height: 56px;
-
     border: 5px dotted #FFF;
     border-radius: 50%;
     display: inline-block;
@@ -55,6 +54,7 @@
     margin: 0.8rem;
     border-radius: 1rem;
     cursor: pointer;
+    margin-bottom: 2rem;
 }
 
 .inputArea {
@@ -89,7 +89,7 @@
     justify-content: center;
     margin: 1rem;
     font-size: 42px;
-    color: whitesmoke;
+    color: #fdc94b;
 }
 
 .topicContainer {

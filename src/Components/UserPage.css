@@ -1,3 +1,125 @@
 .usersList {
+    color: #fec94c;
+    list-style: none;
+    font-size: 24px;
+}
+
+.createButton {
+    border: none;
+    color: #fec94c;
+    background: black;
+    text-align: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 24px;
+    margin-bottom: 2rem;
+    margin-top: 1.5rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    padding:1.2rem;
+    width: 15rem;
+}
+.joinButton {
+    border: none;
     color: white;
+    background: black;
+    text-align: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 24px;
+    margin-bottom: 2rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    padding:1.2rem;
+    width: 15rem;
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;}
+
+.inputName {
+    border: none;
+    background: black;
+    color: white;
+    padding: 15px 32px;
+    text-decoration: none;
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem;
+    border-radius: 1rem;
+    text-align: left;
+    width: 50%;
+    overflow: hidden;
+    resize: none;
+&:focus{
+     background: black;
+ }
+&:hover {
+     background: black
+ }
+}
+
+
+.inputGameid {
+    border: none;
+    background: black;
+    color: white;
+    padding: 15px 32px;
+    text-decoration: none;
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem;
+    border-radius: 1rem;
+    text-align: left;
+    width: 50%;
+    overflow: hidden;
+    resize: none;
+&:focus{
+     background: black;
+ }
+&:hover {
+     background: black
+ }
+}
+
+.sessionId {
+    color: white;
+font-size:24px;
+}
+.userIdNumber { color: #ff4364;}
+
+.nameHeader {
+    font-size: 1.2rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hostContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hostLogo {
+    height: 5vmin;
+}
+
+.shareText {
+    font-size: 18px;
+    margin-top: 1rem;
 }
