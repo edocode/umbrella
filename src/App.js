@@ -2,6 +2,7 @@ import logo from './logo.png';
 import './App.css';
 import PromptPage from "./Components/PromptPage";
 import React from "react";
+import UserPage from "./Components/UserPage";
 
 function App() {
     const [startGame, setStartGame] = React.useState(false);
@@ -13,9 +14,11 @@ function App() {
             <div id='spacer'></div>
         </header>
         <container>
-            {!startGame && <div className="introText">Generate the best image without using the banned word
-                <br></br> and win the game ! </div>}
-            {!startGame && <div className="Start-button"><button className="button" onClick={() => setStartGame(true)}>START GAME!</button></div>}
+
+            <UserPage/>
+            <div className="introText">Generate the best image without using the banned word
+               <br></br> and win the game ! </div>
+            {!startGame && <div className="Start-button">{!startGame && <button className="button" onClick={() => setStartGame(true)}>START GAME!</button>}</div>}
             {startGame && <PromptPage disabled={false}/>}
         </container>
 
