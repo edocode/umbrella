@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import {initializeApp} from "firebase/app";
 import './UserPage.css';
 import PromptPage from './PromptPage'
+import ImagePage from "./ImagePage";
 
 const firebaseConfig = {
     databaseURL: process.env.REACT_APP_DB_URL,
@@ -21,6 +22,7 @@ function UserPage(){
     const [sessionId, setSessionId] = useState('')
     const [startGame, setStartGame] = React.useState(false);
     const [showPromptPage, setShowPromptPage] =React.useState(false)
+    const [showImagePage, setShowImagePage] = React.useState(false)
 
     useEffect(() => {
         setShowPromptPage(true)
@@ -149,7 +151,8 @@ function UserPage(){
                     await update(sessionRef, { started: true })
                     setStartGame(true)
             }}>START GAME!</button></div>}
-            {startGame && showPromptPage && <PromptPage disabled={false} sessionId={sessionId} />}
+            {startGame && showPromptPage && <PromptPage disabled={false} sessionId={sessionId} isHost={isHost} setShowPromptPage={setShowPromptPage} setShowImagePage={setShowImagePage} />}
+            {showImagePage && <ImagePage sessionId={sessionId} />}
         </>
     )
 }

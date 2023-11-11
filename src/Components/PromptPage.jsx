@@ -4,7 +4,7 @@ import axios from 'axios';
 import $ from 'jquery';
 import "./../style.css";
 import {initializeApp} from "firebase/app";
-import {getDatabase, onValue, ref, update} from "firebase/database";
+import {getDatabase, onValue, ref, update, push, set} from "firebase/database";
 
 // TODO: consolidate to one place
 const firebaseConfig = {
@@ -14,7 +14,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-const PromptPage = ({disabled, sessionId})  =>  {
+const PromptPage = ({disabled, sessionId, isHost, setShowImagePage, setShowPromptPage})  =>  {
         const words = [
         "apple",
         "banana",
@@ -96,6 +96,9 @@ const PromptPage = ({disabled, sessionId})  =>  {
                 setEnableSubmit(false)
                 setImageLoading(false)
                 setShowImage(data.imageUrl);
+
+                const newImageRef = push(ref(db, `sessions/${sessionId}/images`))
+                await set(newImageRef, data.imageUrl)
             } catch (error) {
                 console.error("Error in generateImage:", error);
                 throw error;
@@ -104,8 +107,14 @@ const PromptPage = ({disabled, sessionId})  =>  {
     };
 
     $(document).ready(function(){
-        setTimeout(function(){
+        setTimeout(async function(){
             setShowTimesUp(true)
+
+            // end answer stage if host
+            if (isHost) {
+                const sessionRef = ref(db, `sessions/${sessionId}`)
+                await update(sessionRef, { endAnswer: true })
+            }
         }, 60000);
     });
 
@@ -136,8 +145,13 @@ const PromptPage = ({disabled, sessionId})  =>  {
         const sessionRef = ref(db, `sessions/${sessionId}`)
         onValue(sessionRef, (snapshot) => {
             const topic = snapshot.val().topic;
+            const endAnswer = snapshot.val().endAnswer;
             if (topic) {
                 setShowTopic(topic)
+            }
+            if (endAnswer) {
+                setShowImagePage(true)
+                setShowPromptPage(false)
             }
         })
     }, [])
