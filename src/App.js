@@ -13,9 +13,9 @@ function App() {
             <div id='spacer'></div>
         </header>
         <container>
-            <div className="introText">Generate the best image without using the banned word
-               <br></br> and win the game ! </div>
-            {!startGame && <div className="Start-button">{!startGame && <button className="button" onClick={() => setStartGame(true)}>START GAME!</button>}</div>}
+            {!startGame && <div className="introText">Generate the best image without using the banned word
+                <br></br> and win the game ! </div>}
+            {!startGame && <div className="Start-button"><button className="button" onClick={() => setStartGame(true)}>START GAME!</button></div>}
             {startGame && <PromptPage disabled={false}/>}
         </container>
 

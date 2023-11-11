@@ -6,8 +6,9 @@
 }
 
 .loader {
-    width: 48px;
-    height: 48px;
+    width: 56px;
+    height: 56px;
+
     border: 5px dotted #FFF;
     border-radius: 50%;
     display: inline-block;
@@ -31,24 +32,24 @@
     background: black;
     text-align: center;
     text-decoration: none;
-    font-size: 28px;
+    font-size: 24px;
     display: flex;
     flex-direction: column;
     margin-bottom: 4rem;
     margin-top: 1.5rem;
     border-radius: 1rem;
     cursor: pointer;
-    padding:2rem;
+    padding:1.2rem;
 }
 
 .generatorImageButton {
     border: none;
     color: white;
     background: black;
-    padding:2rem;
+    padding:1.2rem;
     text-align: center;
     text-decoration: none;
-    font-size: 28px;
+    font-size: 24px;
     display: flex;
     flex-direction: column;
     margin: 0.8rem;
@@ -69,7 +70,7 @@
     border-radius: 1rem;
     text-align: left;
     width: 50%;
-    overflow:hidden;
+    overflow: hidden;
     resize: none;
     min-height: 100px;
     max-height: 100px;
@@ -88,7 +89,7 @@
     justify-content: center;
     margin: 1rem;
     font-size: 42px;
-    color: rebeccapurple;
+    color: whitesmoke;
 }
 
 .topicContainer {
@@ -106,7 +107,7 @@
     justify-content: center;
     margin: 1rem;
     font-size: 28px;
-    color: white;
+    color: orangered;
 }
 
 .timeUpText {
@@ -116,4 +117,25 @@
     height: 80vh;
     font-size: 6rem;
     color:white;
+}
+
+.generatingText {
+    color:white;
+    font-size:24px;
+    padding:2rem;
+}
+
+
+.timer {
+    color:white;
+    font-size:24px;
+}
+.countdownNumber {
+    color:#fec94c;
+}
+
+.waiting {
+    padding: 1rem;
+    font-size: 3rem;
+    color: whitesmoke;
 }

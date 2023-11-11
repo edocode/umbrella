@@ -2,13 +2,14 @@
   text-align: center;
   background: hsla(0, 0%, 0%, 1);
   background: linear-gradient(180deg, hsla(0, 0%, 0%, 1) 0%, hsla(270, 67%, 38%, 1) 100%);
+  height: 100vh;
 }
 
 .App-logo {
   display: flex;
   height: 20vmin;
   pointer-events: none;
-
+  margin: 1rem;
 }
 
 .App-header {
@@ -16,19 +17,21 @@
   height: 10vh;
   display: flex;
   align-items: center;
-  font-size: calc(10px + 2vmin);
+  font-size: 4rem;
   color: white;
-  padding: 9rem 3rem;
+  padding: 3rem 2rem;
 }
 
 .Game-name {
   text-align: center;
-  font-size: 6rem;
+  font-size: 4rem;
 }
 
 .introText {
   color:white;
-  font-size: 4rem;
+  font-size: 2.5rem;
+  height: 20vh;
+  padding: 6rem 2rem;
 }
 
 .Start-button {
@@ -37,11 +40,11 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 80vh;
+  height: 20vh;
 }
 
 .button {
-  font-size: 6rem;
+  font-size: 5rem;
   font-family: "Helvetica";
   cursor: pointer;
   border: none;

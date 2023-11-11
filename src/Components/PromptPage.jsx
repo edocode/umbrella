@@ -108,28 +108,47 @@ const PromptPage = ({disabled})  =>  {
     const [enableSubmit, setEnableSubmit] = React.useState(true);
     const [showTimer, setShowTimer] = React.useState(true);
 
+    const renderTime = ({ remainingTime }) => {
+        if (remainingTime === 0) {
+            return <div className="timer">Too late...</div>;
+        }
+
+        return (
+            <div className="timer">
+                <div>Remaining</div>
+                <div className="countdownNumber">{remainingTime}</div>
+                <div>seconds</div>
+            </div>
+        );
+    };
+
     return (
         <>
-            {!showTimesUp && (<div className="timeLeft">
+            <div className="timeLeft">
                 <div className="topicContainer">{showTopic === '' && <button className="randomWordButton" disabled={disabled}  onClick={() => pickRandomWord()}>Pick a topic</button>}
                     {showTopic && <div className="topic">{showTopic}</div>}</div>
 
                 <textarea className="inputArea" id="promptText" name="promptText" placeholder="Type your prompt here"></textarea>
+                {showError && <div className="warning">Do not use the banned word!!</div>}
                 {enableSubmit && <input className="generatorImageButton" type={"button"} value={"Generate image"} onClick={() => (generateImage(document.getElementById("promptText").value))} />}
                 {imageLoading &&
-                    (<><div>Generating image for you...</div>
+                    (<><div className="generatingText">Generating image for you...</div>
                         <span className="loader"></span></>)}
 
-
-                {showTimer && <div><CountdownCircleTimer isPlaying
+                {showTimer && <div ><CountdownCircleTimer
+                    className="countdownText"
+                    isPlaying
                                                             children
                                                             duration={60}
-                                                            colors={['#004777', '#F7B801', '#A30000', '#A30000']}
-                                                            colorsTime={[7, 5, 2, 0]}>{({ remainingTime }) => "You can do it in " + remainingTime}</CountdownCircleTimer></div>}
-                {showError && <div className="warning">Do not use the banned word!!</div>}
+                                                            colors={['#05c148', '#0387b9', '#fdc94b', '#ff4364']}
+                                                            colorsTime={[45, 30, 15, 0]}>
+
+                    {renderTime}</CountdownCircleTimer></div>}
+
                 {showImage && <img alt="generated-image" src={showImage} width="256" height="256"/> }
-            </div>)}
-            {showTimesUp && (<div className="timeUpText">Times Up!</div>)}
+                {showImage && <div className="waiting">Waiting for other players....</div>}
+            </div>
+            {showTimesUp && (<div className="timeUpText">Time's Up!</div>)}
         </>
 
     )
