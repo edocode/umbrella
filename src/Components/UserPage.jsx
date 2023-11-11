@@ -97,9 +97,9 @@ function UserPage(){
 
     return(<>
             <h1>Game ID: {sessionId}</h1>
-    <ol class="usersList">
-        {users && users.map(user => <li>{user}</li>)}
-    </ol>
+            <ol class="usersList">
+                {users && users.map(user => <li>{user}</li>)}
+            </ol>
         </>
     )
 }
