@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import axios from 'axios'
-import $ from 'jquery'
 import './../style.css'
 import { initializeApp } from 'firebase/app'
 import { getDatabase, onValue, ref, update, push, set } from 'firebase/database'
@@ -14,7 +13,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 const db = getDatabase(app)
 
-const PromptPage = ({
+const PromptPage: React.FC<{
+    disabled: boolean
+    sessionId: string
+    isHost: boolean
+    setShowPromptPage: React.Dispatch<React.SetStateAction<boolean>>
+    setShowImagePage: React.Dispatch<React.SetStateAction<boolean>>
+}> = ({
     disabled,
     sessionId,
     isHost,
@@ -73,11 +78,10 @@ const PromptPage = ({
     ]
 
     const pickRandomWord = () => {
-        const item = words[Math.floor(Math.random() * words.length)]
-        return item
+        return words[Math.floor(Math.random() * words.length)]
     }
 
-    const generateImage = async (prompt) => {
+    const generateImage = async (prompt: string) => {
         const words = prompt.split(' ')
         let flag = 0
 
@@ -110,27 +114,27 @@ const PromptPage = ({
         }
     }
 
-    $(document).ready(function () {
-        setTimeout(async function () {
-            setShowTimesUp(true)
+        useEffect(() => {
+            setTimeout(async function () {
+                setShowTimesUp(true)
 
-            // end answer stage if host
-            if (isHost) {
-                const sessionRef = ref(db, `sessions/${sessionId}`)
-                await update(sessionRef, { endAnswer: true })
-            }
-        }, 60000)
-    })
+                // end answer stage if host
+                if (isHost) {
+                    const sessionRef = ref(db, `sessions/${sessionId}`)
+                    await update(sessionRef, { endAnswer: true })
+                }
+            }, 60000)
+        }, [])
 
-    const [showTopic, setShowTopic] = React.useState('')
-    const [showImage, setShowImage] = React.useState('')
-    const [showError, setShowError] = React.useState(false)
-    const [showTimesUp, setShowTimesUp] = React.useState(false)
-    const [imageLoading, setImageLoading] = React.useState(false)
-    const [enableSubmit, setEnableSubmit] = React.useState(true)
-    const [showTimer, setShowTimer] = React.useState(true)
+    const [showTopic, setShowTopic] = useState('')
+    const [showImage, setShowImage] = useState('')
+    const [showError, setShowError] = useState(false)
+    const [showTimesUp, setShowTimesUp] = useState(false)
+    const [imageLoading, setImageLoading] = useState(false)
+    const [enableSubmit, setEnableSubmit] = useState(true)
+    const [showTimer, setShowTimer] = useState(true)
 
-    const renderTime = ({ remainingTime }) => {
+    const renderTime = ({ remainingTime }: {remainingTime: number}) => {
         if (remainingTime === 0) {
             return <div className="timer">Too late...</div>
         }
@@ -199,7 +203,7 @@ const PromptPage = ({
                         value={'Generate image'}
                         onClick={() =>
                             generateImage(
-                                document.getElementById('promptText').value
+                                (document.getElementById('promptText') as HTMLInputElement).value
                             )
                         }
                     />
@@ -216,9 +220,9 @@ const PromptPage = ({
                 {showTimer && (
                     <div>
                         <CountdownCircleTimer
+                            //@ts-ignore
                             className="countdownText"
                             isPlaying
-                            children
                             duration={60}
                             colors={[
                                 '#05c148',

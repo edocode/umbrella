@@ -22,7 +22,7 @@ const db = getDatabase(app)
 
 function UserPage() {
     const [name, setName] = useState('')
-    const [users, setUsers] = useState([])
+    const [users, setUsers] = useState<string[]>([])
     const [disabled, setDisabled] = React.useState(false)
 
     const [step, setStep] = useState(0)
@@ -97,14 +97,14 @@ function UserPage() {
 
                             // listen to new changes to player list
                             onValue(usersRef, (snapshot) => {
-                                var newUsers = []
+                                var newUsers: string[]= []
                                 snapshot.forEach((childSnapshot) => {
                                     newUsers.push(childSnapshot.val())
                                 })
                                 setUsers(newUsers)
                             })
 
-                            setSessionId(newSessionRef.key)
+                            setSessionId(newSessionRef.key!)
                             setStep(2)
                         }}
                     >
@@ -151,7 +151,7 @@ function UserPage() {
                                 `sessions/${sessionId}/users`
                             )
                             onValue(usersRef, (snapshot) => {
-                                var newUsers = []
+                                var newUsers: string[] = []
                                 snapshot.forEach((childSnapshot) => {
                                     newUsers.push(childSnapshot.val())
                                 })
