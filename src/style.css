@@ -1,141 +1,140 @@
 .timeLeft {
-    height: 50vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .loader {
-    width: 56px;
-    height: 56px;
-    border: 5px dotted #FFF;
-    border-radius: 50%;
-    display: inline-block;
-    position: relative;
-    box-sizing: border-box;
-    animation: rotation 2s linear infinite;
+  width: 56px;
+  height: 56px;
+  border: 5px dotted #fff;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 2s linear infinite;
 }
 
 @keyframes rotation {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .randomWordButton {
-    border: none;
-    color: white;
-    background: black;
-    text-align: center;
-    text-decoration: none;
-    font-size: 24px;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 4rem;
-    margin-top: 1.5rem;
-    border-radius: 1rem;
-    cursor: pointer;
-    padding:1.2rem;
+  border: none;
+  color: white;
+  background: black;
+  text-align: center;
+  text-decoration: none;
+  font-size: 24px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4rem;
+  margin-top: 1.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  padding: 1.2rem;
 }
 
 .generatorImageButton {
-    border: none;
-    color: white;
-    background: black;
-    padding:1.2rem;
-    text-align: center;
-    text-decoration: none;
-    font-size: 24px;
-    display: flex;
-    flex-direction: column;
-    margin: 0.8rem;
-    border-radius: 1rem;
-    cursor: pointer;
-    margin-bottom: 2rem;
+  border: none;
+  color: white;
+  background: black;
+  padding: 1.2rem;
+  text-align: center;
+  text-decoration: none;
+  font-size: 24px;
+  display: flex;
+  flex-direction: column;
+  margin: 0.8rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  margin-bottom: 2rem;
 }
 
 .inputArea {
-    border: none;
+  border: none;
+  background: black;
+  color: white;
+  padding: 15px 32px;
+  text-decoration: none;
+  font-size: 22px;
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem;
+  border-radius: 1rem;
+  text-align: left;
+  width: 50%;
+  overflow: hidden;
+  resize: none;
+  min-height: 100px;
+  max-height: 100px;
+  &:focus {
     background: black;
-    color: white;
-    padding: 15px 32px;
-    text-decoration: none;
-    font-size: 22px;
-    display: flex;
-    flex-direction: column;
-    margin: 1.5rem;
-    border-radius: 1rem;
-    text-align: left;
-    width: 50%;
-    overflow: hidden;
-    resize: none;
-    min-height: 100px;
-    max-height: 100px;
-    &:focus{
-        background: black;
-    }
-    &:hover {
-        background: black
-    }
+  }
+  &:hover {
+    background: black;
+  }
 }
 
 .topic {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 1rem;
-    font-size: 42px;
-    color: #fdc94b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+  font-size: 42px;
+  color: #fdc94b;
 }
 
 .topicContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 20%;
 }
 
 .warning {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 1rem;
-    font-size: 28px;
-    color: orangered;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+  font-size: 28px;
+  color: orangered;
 }
 
 .timeUpText {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 10vh;
-    font-size: 6rem;
-    color:white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 10vh;
+  font-size: 6rem;
+  color: white;
 }
 
 .generatingText {
-    color:white;
-    font-size:24px;
-    padding:2rem;
+  color: white;
+  font-size: 24px;
+  padding: 2rem;
 }
-
 
 .timer {
-    color:white;
-    font-size:24px;
+  color: white;
+  font-size: 24px;
 }
 .countdownNumber {
-    color:#fec94c;
+  color: #fec94c;
 }
 
 .waiting {
-    padding: 1rem;
-    font-size: 3rem;
-    color: whitesmoke;
+  padding: 1rem;
+  font-size: 3rem;
+  color: whitesmoke;
 }
