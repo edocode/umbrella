@@ -1,5 +1,5 @@
 // TODO: consolidate to one place
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { getDatabase, onValue, ref } from 'firebase/database'
 import { initializeApp } from 'firebase/app'
 
@@ -10,12 +10,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 const db = getDatabase(app)
 
-const ImagePage = ({ sessionId }) => {
-    const [images, setImages] = useState([])
+const ImagePage: React.FC<{sessionId: string}> = ({ sessionId }) => {
+    const [images, setImages] = useState<string[]>([])
     useEffect(() => {
         const sessionRef = ref(db, `sessions/${sessionId}/images`)
         onValue(sessionRef, (snapshot) => {
-            let images = []
+            let images: string[] = []
             snapshot.forEach((childSnapshot) => {
                 images.push(childSnapshot.val())
             })
