@@ -24,7 +24,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "playwright test",
     "eject": "react-scripts eject",
     "dev": "netlify dev --functions-port 2345",
     "lint-fix": "prettier src/**/*.jsx src/**/*.js src/**/*.css --write"
@@ -48,6 +48,7 @@
     ]
   },
   "devDependencies": {
+    "@playwright/test": "^1.39.0",
     "netlify-cli": "^17.2.1",
     "prettier": "^3.0.3"
   },

@@ -25,3 +25,7 @@ yarn-error.log*
 
 # Local Netlify folder
 .netlify
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

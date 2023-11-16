@@ -185,7 +185,7 @@ function UserPage() {
                     <div className="gameIdWrapper">
                         <h1 className="sessionId">
                             Game ID:
-                            <span className="userIdNumber"> {sessionId}</span>
+                            <span className="userIdNumber" data-testid="sessionId"> {sessionId}</span>
                             {isHost && !startGame && (
                                 <div className="shareText">
                                     Share the link to other players
