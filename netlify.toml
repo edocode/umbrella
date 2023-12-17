@@ -1,3 +1,8 @@
 [functions]
   # Sets a custom directory for Netlify Functions
   directory = "src/functions/"
+
+[template.environment]
+  API_KEY = "YOUR OPEN AI API KEY"
+  REACT_APP_PROJECT_ID = "FIREBASE PROJECT ID"
+  REACT_APP_DB_URL = "FIREBASE DATABASE URL"
