@@ -1,7 +1,7 @@
 // @ts-ignore
 import logo from './logo.png'
 import './App.css'
-import UserPage from './Components/UserPage'
+import UserPage from './components/UserPage'
 
 function App() {
     return (

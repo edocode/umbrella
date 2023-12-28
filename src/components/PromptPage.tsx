@@ -95,7 +95,7 @@ const PromptPage: React.FC<{
             setShowTimer(false)
 
             try {
-                const { data } = await axios.post('/api/image', {
+                const { data } = await axios.post('/.netlify/functions/image', {
                     prompt: prompt,
                 })
 
