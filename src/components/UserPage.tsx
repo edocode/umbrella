@@ -23,7 +23,6 @@ const db = getDatabase(app)
 function UserPage() {
     const [name, setName] = useState('')
     const [users, setUsers] = useState<string[]>([])
-    const [disabled, setDisabled] = React.useState(false)
 
     const [step, setStep] = useState(0)
     const [isHost, setIsHost] = useState(false)

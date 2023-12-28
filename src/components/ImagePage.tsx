@@ -21,12 +21,12 @@ const ImagePage: React.FC<{sessionId: string}> = ({ sessionId }) => {
             })
             setImages(images)
         })
-    }, [])
+    }, [sessionId])
     return (
         <div>
             {images.map((image) => (
                 <img
-                    alt="generated-image"
+                    alt="generated result"
                     src={image}
                     width="256"
                     height="256"

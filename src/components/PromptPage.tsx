@@ -3,7 +3,7 @@ import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import axios from 'axios'
 import './../style.css'
 import { initializeApp } from 'firebase/app'
-import { getDatabase, onValue, ref, update, push, set } from 'firebase/database'
+import { getDatabase, onValue, push, ref, set, update } from 'firebase/database'
 
 // TODO: consolidate to one place
 const firebaseConfig = {
@@ -20,12 +20,12 @@ const PromptPage: React.FC<{
     setShowPromptPage: React.Dispatch<React.SetStateAction<boolean>>
     setShowImagePage: React.Dispatch<React.SetStateAction<boolean>>
 }> = ({
-    disabled,
-    sessionId,
-    isHost,
-    setShowImagePage,
-    setShowPromptPage,
-}) => {
+          disabled,
+          sessionId,
+          isHost,
+          setShowImagePage,
+          setShowPromptPage,
+      }) => {
     const words = [
         'apple',
         'banana',
@@ -104,7 +104,7 @@ const PromptPage: React.FC<{
                 setShowImage(data.imageUrl)
 
                 const newImageRef = push(
-                    ref(db, `sessions/${sessionId}/images`)
+                    ref(db, `sessions/${sessionId}/images`),
                 )
                 await set(newImageRef, data.imageUrl)
             } catch (error) {
@@ -114,17 +114,17 @@ const PromptPage: React.FC<{
         }
     }
 
-        useEffect(() => {
-            setTimeout(async function () {
-                setShowTimesUp(true)
+    useEffect(() => {
+        setTimeout(async function() {
+            setShowTimesUp(true)
 
-                // end answer stage if host
-                if (isHost) {
-                    const sessionRef = ref(db, `sessions/${sessionId}`)
-                    await update(sessionRef, { endAnswer: true })
-                }
-            }, 60000)
-        }, [])
+            // end answer stage if host
+            if (isHost) {
+                const sessionRef = ref(db, `sessions/${sessionId}`)
+                await update(sessionRef, { endAnswer: true })
+            }
+        }, 60000)
+    }, [sessionId, isHost])
 
     const [showTopic, setShowTopic] = useState('')
     const [showImage, setShowImage] = useState('')
@@ -134,15 +134,15 @@ const PromptPage: React.FC<{
     const [enableSubmit, setEnableSubmit] = useState(true)
     const [showTimer, setShowTimer] = useState(true)
 
-    const renderTime = ({ remainingTime }: {remainingTime: number}) => {
+    const renderTime = ({ remainingTime }: { remainingTime: number }) => {
         if (remainingTime === 0) {
-            return <div className="timer">Too late...</div>
+            return <div className='timer'>Too late...</div>
         }
 
         return (
-            <div className="timer">
+            <div className='timer'>
                 <div>Remaining</div>
-                <div className="countdownNumber">{remainingTime}</div>
+                <div className='countdownNumber'>{remainingTime}</div>
                 <div>seconds</div>
             </div>
         )
@@ -161,22 +161,22 @@ const PromptPage: React.FC<{
                 setShowPromptPage(false)
             }
         })
-    }, [])
+    }, [sessionId, setShowImagePage, setShowPromptPage])
 
     return (
         <>
-            <div className="timeLeft">
-                <div className="topicContainer">
+            <div className='timeLeft'>
+                <div className='topicContainer'>
                     {showTopic === '' && (
                         <button
-                            className="randomWordButton"
+                            className='randomWordButton'
                             disabled={disabled}
                             onClick={async () => {
                                 const topic = pickRandomWord()
                                 setShowTopic(topic)
                                 const sessionRef = ref(
                                     db,
-                                    `sessions/${sessionId}`
+                                    `sessions/${sessionId}`,
                                 )
                                 await update(sessionRef, { topic })
                             }}
@@ -184,36 +184,36 @@ const PromptPage: React.FC<{
                             Pick a topic
                         </button>
                     )}
-                    {showTopic && <div className="topic">{showTopic}</div>}
+                    {showTopic && <div className='topic'>{showTopic}</div>}
                 </div>
 
                 <textarea
-                    className="inputArea"
-                    id="promptText"
-                    name="promptText"
-                    placeholder="Type your prompt here"
+                    className='inputArea'
+                    id='promptText'
+                    name='promptText'
+                    placeholder='Type your prompt here'
                 ></textarea>
                 {showError && (
-                    <div className="warning">Do not use the banned word!!</div>
+                    <div className='warning'>Do not use the banned word!!</div>
                 )}
                 {enableSubmit && (
                     <input
-                        className="generatorImageButton"
+                        className='generatorImageButton'
                         type={'button'}
                         value={'Generate image'}
                         onClick={() =>
                             generateImage(
-                                (document.getElementById('promptText') as HTMLInputElement).value
+                                (document.getElementById('promptText') as HTMLInputElement).value,
                             )
                         }
                     />
                 )}
                 {imageLoading && (
                     <>
-                        <div className="generatingText">
+                        <div className='generatingText'>
                             Generating image for you...
                         </div>
-                        <span className="loader"></span>
+                        <span className='loader'></span>
                     </>
                 )}
 
@@ -221,7 +221,7 @@ const PromptPage: React.FC<{
                     <div>
                         <CountdownCircleTimer
                             //@ts-ignore
-                            className="countdownText"
+                            className='countdownText'
                             isPlaying
                             duration={60}
                             colors={[
@@ -239,17 +239,17 @@ const PromptPage: React.FC<{
 
                 {showImage && (
                     <img
-                        alt="generated-image"
+                        alt='generated result'
                         src={showImage}
-                        width="256"
-                        height="256"
+                        width='256'
+                        height='256'
                     />
                 )}
                 {showImage && (
-                    <div className="waiting">Waiting for other players....</div>
+                    <div className='waiting'>Waiting for other players....</div>
                 )}
             </div>
-            {showTimesUp && <div className="timeUpText">Time's Up!</div>}
+            {showTimesUp && <div className='timeUpText'>Time's Up!</div>}
         </>
     )
 }
