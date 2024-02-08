@@ -7,8 +7,8 @@ import { getDatabase, onValue, push, ref, set, update } from 'firebase/database'
 
 // TODO: consolidate to one place
 const firebaseConfig = {
-    databaseURL: process.env.REACT_APP_DB_URL,
-    projectId: process.env.REACT_APP_PROJECT_ID,
+    databaseURL: import.meta.env.VITE_APP_DB_URL,
+    projectId: import.meta.env.VITE_APP_PROJECT_ID,
 }
 const app = initializeApp(firebaseConfig)
 const db = getDatabase(app)
